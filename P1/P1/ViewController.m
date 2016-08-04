@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *containerView;
+
 @end
 
 @implementation ViewController
@@ -17,11 +19,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    [self tryTransform];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma - Try
+
+- (void) tryTransform {
+    UIImageView *imageView;
+
+    // 1. Scale
+    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Avatar"]];
+    imageView.frame = CGRectMake(100, 60, 100, 100);
+
+    imageView.layer.transform = CATransform3DMakeScale(2, 2, 0);
+    [self.containerView addSubview:imageView];
+
+    // 2. 3D Rotation
+    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Avatar"]];
+    imageView.frame = CGRectMake(100, 220, 100, 100);
+
+    imageView.layer.transform = CATransform3DMakeRotation(M_PI_4, 1, 1, 0);
+    [self.containerView addSubview:imageView];
+
+    // 3. Rotation
+    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Avatar"]];
+    imageView.frame = CGRectMake(100, 330, 100, 100);
+
+    [imageView.layer setValue:@(M_PI_4) forKeyPath:@"transform.rotation"];
+    [self.containerView addSubview:imageView];
 }
 
 @end
