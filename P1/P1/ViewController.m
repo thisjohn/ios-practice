@@ -20,7 +20,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    [self tryTransform];
+    [self tryBasicLayer];
+    //[self tryTransform];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +30,29 @@
 }
 
 #pragma - Try
+
+- (void) tryBasicLayer {
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame = CGRectMake(50, 100, 200, 200);
+
+    layer.backgroundColor = [UIColor redColor].CGColor;
+
+    //UIImage *image = [UIImage imageNamed:@"Avatar"];
+    //layer.contents = (id)image.CGImage;
+
+    layer.borderColor = [UIColor blueColor].CGColor;
+    layer.borderWidth = 5;  // included in width
+
+    layer.cornerRadius = 15;
+
+    layer.shadowColor = [UIColor blackColor].CGColor;
+    layer.shadowOffset = CGSizeMake(30, 20);
+    layer.shadowOpacity = 0.2;
+
+    //layer.masksToBounds = YES;
+
+    [self.containerView.layer addSublayer:layer];
+}
 
 - (void) tryTransform {
     UIImageView *imageView;
