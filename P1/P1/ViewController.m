@@ -20,9 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    //[self tryBasicLayer];
-    [self tryImageViewLayer];
-    //[self tryImageViewTransform];
+    //[self testBasicLayer];
+    [self testImageViewLayer];
+    //[self testImageViewTransform];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,9 +30,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma - Try
+#pragma - Test
 
-- (void) tryBasicLayer {
+- (void) testBasicLayer {
     CALayer *layer = [[CALayer alloc] init];
     layer.frame = CGRectMake(50, 100, 200, 200);
 
@@ -55,7 +55,7 @@
     [self.containerView.layer addSublayer:layer];
 }
 
-- (void) tryImageViewLayer {
+- (void) testImageViewLayer {
     // Create shadow view on the bottom
     UIView *shadowView = [[UIView alloc] init];
     shadowView.frame = CGRectMake(50, 100, 200, 200);
@@ -81,7 +81,7 @@
     [self.containerView addSubview:shadowView];
 }
 
-- (void) tryImageViewTransform {
+- (void) testImageViewTransform {
     UIImageView *imageView;
 
     // 1. Scale
@@ -105,15 +105,5 @@
     [imageView.layer setValue:@(M_PI_4) forKeyPath:@"transform.rotation"];
     [self.containerView addSubview:imageView];
 }
-
-/** UIView的圆角+阴影 */
-/*- (void) testTargetView {
- self.targetView.layer.shadowColor = [UIColor blackColor].CGColor;
- self.targetView.layer.shadowOffset = CGSizeMake(20, 20);
- self.targetView.layer.shadowOpacity = 0.5;
- self.targetView.layer.cornerRadius = 15;
- 
- self.targetView.layer.borderWidth = 10;
- }*/
 
 @end
