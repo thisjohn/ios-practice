@@ -20,8 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    //[self testBasicLayer];
-    [self testImageViewLayer];
+    [self testBasicLayer];
+    [self testImageViewShadowAndCorner1];
+    [self testImageViewShadowAndCorner2];
     //[self testImageViewTransform];
 }
 
@@ -34,36 +35,54 @@
 
 - (void) testBasicLayer {
     CALayer *layer = [[CALayer alloc] init];
-    layer.frame = CGRectMake(50, 100, 200, 200);
+    layer.frame = CGRectMake(85, 30, 150, 150);
 
     layer.borderColor = [UIColor blueColor].CGColor;
-    layer.borderWidth = 5;  // included in width
+    layer.borderWidth = 2;  // included in width
 
-    layer.cornerRadius = 15;
+    layer.cornerRadius = 10;
 
     layer.shadowColor = [UIColor blackColor].CGColor;
-    layer.shadowOffset = CGSizeMake(30, 20);
-    layer.shadowOpacity = 0.2;
+    layer.shadowOffset = CGSizeMake(10, 6);
+    layer.shadowOpacity = 0.3;
 
     layer.backgroundColor = [UIColor redColor].CGColor;
 
-    //UIImage *image = [UIImage imageNamed:@"Avatar"];
-    //layer.contents = (id)image.CGImage;
+    [self.containerView.layer addSublayer:layer];
+}
+
+- (void) testImageViewShadowAndCorner1 {
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame = CGRectMake(85, 200, 150, 150);
+
+    layer.borderColor = [UIColor blueColor].CGColor;
+    layer.borderWidth = 2;  // included in width
+
+    layer.cornerRadius = 10;
+
+    layer.shadowColor = [UIColor blackColor].CGColor;
+    layer.shadowOffset = CGSizeMake(10, 6);
+    layer.shadowOpacity = 0.3;
+
+    layer.backgroundColor = [UIColor redColor].CGColor;
+
+    UIImage *image = [UIImage imageNamed:@"Avatar"];
+    layer.contents = (id)image.CGImage;
 
     //layer.masksToBounds = YES;
 
     [self.containerView.layer addSublayer:layer];
 }
 
-- (void) testImageViewLayer {
+- (void) testImageViewShadowAndCorner2 {
     // Create shadow view on the bottom
     UIView *shadowView = [[UIView alloc] init];
-    shadowView.frame = CGRectMake(50, 100, 200, 200);
+    shadowView.frame = CGRectMake(85, 370, 150, 150);
 
     shadowView.layer.cornerRadius = 10;
 
     shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
-    shadowView.layer.shadowOffset = CGSizeMake(5, 3);
+    shadowView.layer.shadowOffset = CGSizeMake(10, 6);
     shadowView.layer.shadowOpacity = 0.3;
 
     shadowView.backgroundColor = [UIColor redColor];
